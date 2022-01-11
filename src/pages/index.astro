@@ -1,25 +1,49 @@
 ---
 	import "../styles/index.scss";
 	import BaseComponent from "../components/base.astro";
-	// import HeaderComponent from "../components/header.astro";
+	import HeaderComponent from "../components/header.astro";
 	import FooterComponent from "../components/footer.astro";
 
-	import LogoImage from "/assets/image/logo.png";
+	import FondoImage from "/assets/image/back.jpg";
+	// import LogoBlack from "/assets/image/logo_black.png";
+	import LogoWhite from "/assets/image/logo.png";
+	import DemoImg from "/assets/image/anuncio.png";
+	import Demo4Img from "/assets/image/demo4.jpg";
+	import Granos from "/assets/image/granos.png";
+	import Productos from "/assets/image/productos.png";
 ---
 
-<BaseComponent title="Homepage">
-	
-	<main class="section main">
-		<h1 class="main__title">Lorem, ipsum dolor.</h1>
-		<div class="main__content">
-			<img src={LogoImage} alt="logo">
-		</div>
-	</main>
+<BaseComponent title="Monte Viejo">
+	<HeaderComponent></HeaderComponent>
 
+	<main class="section main">
+		<img class="granos_front" src={Granos} alt="productos">
+		<div class="toprow">
+			<img src={LogoWhite} alt="logo black">
+		</div>
+		<div class="main__content">
+			<img class="granos_back" id="mouse" src={Productos} alt="productos">
+			<h1 class="main__phrase">Monte Viejo</h1>
+		</div>
+		<img class="main__fondo" src={FondoImage} alt="fondo">
+	</main>
+	
 	<section class="section two">
-		<h1 class="main__title">Lorem, ipsum dolor.</h1>
-		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis blanditiis nostrum, officiis, aperiam, laboriosam ab aliquam quam officia quo temporibus amet beatae magnam exercitationem saepe minus laborum facilis necessitatibus at ipsum odio iste modi alias illo doloremque. Repellat, quaerat illo.</p>
+		<div class="section__content">
+			<h1>Nuestro Café.</h1>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis blanditiis nostrum, officiis, aperiam, laboriosam ab aliquam quam officia quo temporibus amet beatae magnam exercitationem saepe minus laborum facilis necessitatibus at ipsum odio iste modi alias illo doloremque. Repellat, quaerat illo.</p>
+		</div>
+		<img src={DemoImg} alt="demo image">
 	</section>
 
-	<FooterComponent></FooterComponent>
+	<section class="section three">
+		<img src={Demo4Img} alt="demo image">
+		<div class="section__content">
+			<h1>Lorem, ipsum dolor.</h1>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis blanditiis nostrum, officiis, aperiam, laboriosam ab aliquam quam officia quo temporibus amet beatae magnam exercitationem saepe minus laborum facilis necessitatibus at ipsum odio iste modi alias illo doloremque. Repellat, quaerat illo.</p>
+		</div>
+	</section>
+
+	<!-- <FooterComponent></FooterComponent> -->
+	<script src={Astro.resolve("../components/index.js")} type="module"></script>
 </BaseComponent>

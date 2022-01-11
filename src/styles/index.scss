@@ -3,25 +3,77 @@
 @import "./mixins";
 @font-face {
 	font-family: "Inter", sans-serif;
-	src: url("/assets/font/Inter-Black.ttf") format("truetype"),
-		url("/assets/font/Inter-Bold.ttf") format("truetype"),
-		url("/assets/font/Inter-ExtraBold.ttf") format("truetype"),
-		url("/assets/font/Inter-ExtraLight.ttf") format("truetype"),
-		url("/assets/font/Inter-Light.ttf") format("truetype"),
-		url("/assets/font/Inter-Medium.ttf") format("truetype"),
-		url("/assets/font/Inter-Regular.ttf") format("truetype"),
-		url("/assets/font/Inter-SemiBold.ttf") format("truetype"),
-		url("/assets/font/Inter-Thin.ttf") format("truetype");
+	src: url("/assets/font/QuickSand-Bold.ttf") format("truetype"),
+		url("/assets/font/Quicksand-Light.ttf") format("truetype"),
+		url("/assets/font/Quicksand-Medium.ttf") format("truetype"),
+		url("/assets/font/Quicksand-Regular.ttf") format("truetype"),
+		url("/assets/font/Quicksand-SemiBold.ttf") format("truetype");
 }
 body {
 	@include fullscreensize();
 	overflow-x: hidden;
 
-	font-family: "Inter", sans-serif;
+	font-family: "Quicksand", sans-serif;
 
 	background-color: $void;
 	color: #fff;
 	box-sizing: border-box;
+}
+
+/**/
+//  ========== HEADER ==========
+/**/
+$logo_width: 120px;
+header {
+	display: none;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	// height: 20vh;
+	background-color: $void;
+	z-index: 10;
+	transform: translateY(20);
+	.nav {
+		position: sticky;
+		top: 0;
+		height: auto + 2vh;
+
+		ul {
+			@include flex_center(row);
+		}
+		button {
+			@include button;
+			padding: 0 1rem;
+			color: darken(white, 10%);
+			transition: color $hover_animation_time ease-in-out;
+			img {
+				width: $logo_width;
+				opacity: 0.8;
+				filter: brightness(300%) contrast(300%);
+				transition: opacity $hover_animation_time ease-in-out;
+				margin: 0 3rem;
+			}
+			&:hover {
+				color: white;
+				text-decoration: underline;
+				text-underline-offset: 10px;
+			}
+			&:hover img {
+				opacity: 1;
+			}
+		}
+	}
+	animation: headerfadein 200ms ease-in;
+}
+@keyframes headerfadein {
+	from {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /**/
@@ -30,19 +82,83 @@ body {
 
 .section {
 	@include fullscreensize();
-	h1 {
-		text-align: center;
-		font-size: fontz(accent);
-	}
 }
 
 .main {
-	&__content {
-		margin: 0 auto;
-		text-align: center;
+	position: relative;
+	@include flex_center(column);
+	overflow: hidden;
+	.granos_front {
+		position: absolute;
+		scale: 1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-20%, -40%);
+		z-index: 2;
+		filter: blur(5px);
+	}
+	.toprow {
+		position: absolute;
+		top: 4vh;
 		img {
-			width: 50%;
+			width: $logo_width;
+			filter: brightness(300%) contrast(300%);
 		}
+	}
+
+	&__content {
+		text-align: center;
+		h1 {
+			position: relative;
+			z-index: 1;
+		}
+		img {
+			width: 60vw;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&__phrase {
+		font-size: fontz(super_accent);
+		font-weight: 500;
+		text-transform: uppercase;
+		color: lighten(white, 8%);
+	}
+	&__fondo {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		scale: 1.2;
+		opacity: 0.6;
+		height: 100vh;
+	}
+}
+
+.two,
+.three {
+	@include flex_center(row);
+	.section__content {
+		max-width: 40%;
+	}
+
+	img {
+		width: 30%;
+	}
+	h1 {
+		padding: 5vh 0;
+		font-size: fontz(accent);
+		color: white;
+	}
+	p {
+		font-size: fontz(normal);
+	}
+}
+
+.section {
+	&:nth-child(4) {
+		background-color: lighten($void, 10%);
 	}
 }
 
