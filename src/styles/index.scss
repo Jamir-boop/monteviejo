@@ -1,0 +1,102 @@
+@import "./reset.scss";
+@import "./variables";
+@import "./mixins";
+@font-face {
+	font-family: "Inter", sans-serif;
+	src: url("/assets/font/Inter-Black.ttf") format("truetype"),
+		url("/assets/font/Inter-Bold.ttf") format("truetype"),
+		url("/assets/font/Inter-ExtraBold.ttf") format("truetype"),
+		url("/assets/font/Inter-ExtraLight.ttf") format("truetype"),
+		url("/assets/font/Inter-Light.ttf") format("truetype"),
+		url("/assets/font/Inter-Medium.ttf") format("truetype"),
+		url("/assets/font/Inter-Regular.ttf") format("truetype"),
+		url("/assets/font/Inter-SemiBold.ttf") format("truetype"),
+		url("/assets/font/Inter-Thin.ttf") format("truetype");
+}
+body {
+	@include fullscreensize();
+	overflow-x: hidden;
+
+	font-family: "Inter", sans-serif;
+
+	background-color: $void;
+	color: #fff;
+	box-sizing: border-box;
+}
+
+/**/
+//  ========== MAIN ==========
+/**/
+
+.section {
+	@include fullscreensize();
+	h1 {
+		text-align: center;
+		font-size: fontz(accent);
+	}
+}
+
+.main {
+	&__content {
+		margin: 0 auto;
+		text-align: center;
+		img {
+			width: 50%;
+		}
+	}
+}
+
+/**/
+//  ========== FOOTER ==========
+/**/
+footer {
+	position: relative;
+	.conejo_container {
+		display: flex;
+		-moz-box-pack: center;
+		justify-content: center;
+		align-items: flex-end;
+		height: 60px;
+		overflow: hidden;
+		.conejo {
+			margin-bottom: -16px;
+			color: #ffffff;
+			transform: scale(3);
+			transform-origin: center bottom 0px;
+			.conejosvg {
+				stroke: none;
+				fill: currentcolor;
+				width: 24px;
+				height: 24px;
+				line-height: 0;
+				font-size: 0px;
+				vertical-align: middle;
+			}
+		}
+	}
+	small {
+		span {
+			position: absolute;
+			bottom: 0;
+		}
+		.made_with_love {
+			color: #ffffff6e;
+			right: 5px;
+			font-weight: bold;
+		}
+	}
+}
+
+/*============*/
+/* RESPONSIVE */
+/*============*/
+@media all and (max-width: 600px) {
+	/*
+    	========== FOOTER ==========
+  	*/
+	footer {
+		small {
+			display: none;
+		}
+	}
+}

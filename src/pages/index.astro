@@ -1,0 +1,25 @@
+---
+	import "../styles/index.scss";
+	import BaseComponent from "../components/base.astro";
+	// import HeaderComponent from "../components/header.astro";
+	import FooterComponent from "../components/footer.astro";
+
+	import LogoImage from "/assets/image/logo.png";
+---
+
+<BaseComponent title="Homepage">
+	
+	<main class="section main">
+		<h1 class="main__title">Lorem, ipsum dolor.</h1>
+		<div class="main__content">
+			<img src={LogoImage} alt="logo">
+		</div>
+	</main>
+
+	<section class="section two">
+		<h1 class="main__title">Lorem, ipsum dolor.</h1>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis blanditiis nostrum, officiis, aperiam, laboriosam ab aliquam quam officia quo temporibus amet beatae magnam exercitationem saepe minus laborum facilis necessitatibus at ipsum odio iste modi alias illo doloremque. Repellat, quaerat illo.</p>
+	</section>
+
+	<FooterComponent></FooterComponent>
+</BaseComponent>

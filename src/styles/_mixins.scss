@@ -1,0 +1,94 @@
+@mixin fullscreensize() {
+	width: 100vw;
+	height: 100vh;
+}
+
+@mixin flex_center($direction) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	flex-direction: $direction;
+}
+
+@mixin flex($direction) {
+	display: flex;
+	flex-direction: $direction;
+}
+
+@mixin grid_center() {
+	display: grid;
+	place-items: center;
+}
+
+@mixin buttons {
+	all: unset;
+
+	cursor: pointer;
+	text-decoration: none;
+	text-rendering: optimizeLegibility;
+}
+
+@mixin no_touchy {
+	user-select: none;
+	pointer-events: none;
+}
+
+@mixin bg_text {
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin bg_gradient {
+	background: linear-gradient(60deg, #f79533, #ff16c1, #ff1154, #1160ff);
+	background-size: 300% 300%;
+}
+
+@mixin bg_gradient_animation {
+	animation: animated_gradient 3s ease alternate infinite;
+}
+
+@mixin h1_title() {
+	all: unset;
+	display: block;
+	font-size: fontz(four);
+	font-family: "Ubuntu", sans-serif;
+	font-weight: bold;
+
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+@mixin clamp_position($sides...) {
+	$min: 16px;
+	$pref: 2vw;
+	$max: 500px;
+
+	@each $side in $sides {
+		@if $side == top {
+			top: clamp($min, $pref, $max);
+		} @else if $side == right {
+			right: clamp($min, $pref, $max);
+		} @else if $side == left {
+			left: clamp($min, $pref, $max);
+		} @else if $side == bottom {
+			bottom: clamp($min, $pref, $max);
+		}
+	}
+}
+
+@keyframes animated_gradient {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
+}
+
+@mixin bordertest {
+	border: 1px solid red;
+}
